@@ -1,0 +1,15 @@
+CakePHP snippets for Vim snipMate
+=================================
+
+I used a [little script I wrote][1] in an attempt to roughly convert most of the snippets from the CakePHP TextMate bundle into Vim's snipMate format. After some cleanup, they appear to work just fine. 
+
+Installation/Usage
+==================
+
+Put cakephp.snippets in your snipMate/snippets directory, start Vim and tell snipMate to load them:
+
+`:set ft=php.cakephp`
+
+If you want this to always happen add `au FileType php set ft=php.cakephp` to your ~/.vimrc. If you do this, keep in mind the CakePHP snippets will be available for all PHP files you edit.
+
+[1]: http://gist.github.com/543247

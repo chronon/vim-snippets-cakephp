@@ -1,0 +1,434 @@
+# Layout variables
+snippet cfl
+	<?php echo $content_for_layout; ?>
+
+snippet sfl
+	<?php echo $scripts_for_layout; ?>
+
+snippet tfl
+	<?php echo $title_for_layout; ?>
+
+# Form helper
+snippet form
+	<?php echo $this->Form->create('${1:Model}'$2); ?>
+
+snippet end
+	<?php echo $this->Form->end($3); ?>
+
+snippet date
+	<?php echo $this->Form->dateTime('${1:Model}.${2:field}'$3); ?>
+
+snippet day
+	<?php echo $this->Form->day('${1:Model}.${2:field}'$3); ?>
+
+snippet err
+	<?php echo $this->Form->error('${1:Model}.${2:field}'$3); ?>
+
+snippet file
+	<?php echo $this->Form->file('${1:Model}.${2:field}'$3); ?>
+
+snippet hid
+	<?php echo $this->Form->hidden('${1:Model}.${2:field}'$3); ?>
+
+snippet hour
+	<?php echo $this->Form->hour('${1:Model}.${2:field}'$3); ?>
+
+snippet in
+	<?php echo $this->Form->input('${1:Model}.${2:field}'$3); ?>
+
+snippet label
+	<?php echo $this->Form->label('${1:Model}.${2:field}'$3); ?>
+
+snippet merid
+	<?php echo $this->Form->meridian('${1:Model}.${2:field}'$3); ?>
+
+snippet min
+	<?php echo $this->Form->minute('${1:Model}.${2:field}'$3); ?>
+
+snippet month
+	<?php echo $this->Form->month('${1:Model}.${2:field}'$3); ?>
+
+snippet pass
+	<?php echo $this->Form->password('${1:Model}.${2:field}'$3); ?>
+
+snippet radio
+	<?php echo $this->Form->radio('${1:Model}.${2:field}'$3); ?>
+
+snippet select
+	<?php echo $this->Form->select('${1:Model}.${2:field}'$3); ?>
+
+snippet submit
+	<?php echo $this->Form->submit(${1:'${2:Submit}'$3}); ?>
+
+snippet text
+	<?php echo $this->Form->text('${1:Model}.${2:field}'$3); ?>
+
+snippet textarea
+	<?php echo $this->Form->textarea('${1:Model}.${2:field}'$3); ?>
+
+snippet year
+	<?php echo $this->Form->year('${1:Model}.${2:field}'$3); ?>
+
+# HTML helper
+snippet addc
+	<?php $this->Html->addCrumb('${1:CrumbName}'${2:, '${3:CrumbLink}'}); ?>
+
+snippet char
+	<?php echo $this->Html->charset($1); ?>
+
+snippet css
+	<?php echo $this->Html->css(array('${1:filename}'$2)$3); ?>
+
+snippet div
+	<?php echo $this->Html->div($1); ?>
+
+snippet doc
+	<?php echo $this->Html->doctype('${1:xhtml-strict}'); ?>
+
+snippet getc
+	<?php echo $this->Html->getCrumbs(${1:'${2:«separator»}'}); ?>
+
+snippet img
+	<?php echo $this->Html->image('${1:image.ext}', array('alt'=>'${2:altText}'$3)); ?>
+
+snippet imgl
+	<?php echo $this->Html->link(
+		$this->Html->image('${1:image.ext}', array('alt' => '${2:altText}'$3)),
+		${4:array('controller' => '${5:controller}', 'action' => '${6:action}'$7)},
+		${8:null}, ${9:null}, ${10:false}
+	); ?>
+
+snippet link
+	<?php echo $this->Html->link('${1:text}', ${2:array('controller' => '${3:controller}', 'action' => '${4:action}'$5)}); ?>
+
+snippet metatom
+	<?php echo $this->Html->meta('atom', ${1:$this->webroot('${2:atom.xml}')}); ?>
+
+snippet metdesc
+	<?php echo $this->Html->meta('description', ${1:'${2:your description here}'}); ?>
+
+snippet metaicon
+	<?php echo $this->Html->meta('icon', ${1:$this->webroot('${2:favicon.ico}')}); ?>
+
+snippet metakey
+	<?php echo $this->Html->meta('keywords', ${1:'${2:your keywords here}'}); ?>
+
+snippet metarss
+	<?php echo $this->Html->meta('rss', ${1:$this->webroot('${2:feed.rss}')}); ?>
+
+snippet meta
+	<?php echo $this->Html->meta('${1:type}'$2); ?>
+
+snippet script
+	<?php echo $this->Html->script(array('${1:filename}'$2)$3); ?>
+
+snippet style
+	<?php echo $this->Html->style(${1:array($2)}$3); ?>
+
+# JavaScript helper
+snippet jobj
+	<?php echo $this->Javascript->object(${1:$data}); ?>
+
+snippet jval
+	<?php echo $this->Javascript->value(${1:$var}); ?>
+
+# Controller
+snippet dela
+	$this->${1:ModelName}->deleteAll(${2:$conditions}${3:, ${4:$cascade}});
+
+snippet id=
+	$this->${1:ModelName}->id = ${2:$id};
+
+snippet save
+	$this->${1:ModelName}->save(${2:$this->data});
+
+snippet savef
+	$this->${1:ModelName}->saveField(${2:'$3'}, ${4:$fieldValue});
+
+snippet upa
+	$this->${1:ModelName}->updateAll(${2:$fields}${3:, ${4:$conditions}});
+
+snippet find
+	$this->${1:ModelName}->$2find(${3:'${4:all}' ${5:, array(
+		${6:'conditions' => ${7:'${8}'}}$0
+	)}});
+
+snippet findby
+	$this->${1:ModelName}->findBy${2:FieldName(${3:$value}));
+
+snippet findallby
+	$this->${1:ModelName}->findAllBy${2:FieldName(${3:$value}));
+
+snippet field
+	$this->${1:ModelName}->field(${2:'${3:name}'}, ${4:'conditions'}, ${5:'order'});
+
+# Paginator helper
+snippet pcount
+	<?php echo $this->Paginator->counter($1); ?>
+
+snippet plink
+	<?php echo $this->Paginator->link('${1:title}', array($2)$3); ?>
+
+snippet pnum
+	<?php echo $this->Paginator->numbers($1); ?>
+
+# Session component & helper
+snippet scheck
+	$this->Session->check('${1:Controller}.${2:key}');
+
+snippet sdel
+	$this->Session->delete('${1:Controller}.${2:key}');
+
+snippet sdes
+	$this->Session->destroy();
+
+snippet serr
+	$this->Session->error();
+
+snippet sid
+	$this->Session->id();
+
+snippet sread
+	$this->Session->read('${1:Controller}.${2:key}');
+
+snippet sres
+	$this->Session->restore();
+
+snippet sflash
+	$this->Session->setFlash(${1:'${2:Message}'}$3);
+
+snippet svalid
+	$this->Session->valid();
+
+snippet swrite
+	$this->Session->write('${1:Controller}.${2:key}', '${3:value}');
+
+snippet serrhelper
+	<?php echo $this->Session->error(); ?>
+
+snippet sflashhelper
+	<?php echo $this->Session->flash(${2:'${3:key}'}); ?>
+
+snippet sreadhelper
+	<?php echo $this->Session->read(${2:'${3:keyName}'}); ?>
+
+# Assert
+snippet assertE
+	$this->assertEqual(${1:$result}, ${2:$expected});
+
+snippet assertF
+	$this->assertFalse(${1:$result});
+
+snippet assertP
+	$this->assertPattern(${1:'/${2:pattern}/'}, ${3:$result});
+
+snippet assertT
+	$this->assertTrue(${1:$result});
+
+
+# Misc
+snippet echo 
+	<?php echo $data['${1:Model}']['${2:field}']; ?>
+
+snippet elem
+	<?php echo $this->element('${1:element}'$0); ?>
+
+snippet ra 
+	$this->requestAction(array('controller' => '${1:controller}', 'action' => '${2:action}'$0));
+
+snippet de
+	debug($${1:data});
+
+snippet pr
+	pr($${1:data});
+
+snippet set 
+	$this->set('${1:var}', $${2:$1});
+
+snippet redref
+	$this->redirect($this->referer(${1:'/'}));
+
+snippet re
+	$this->redirect(array('controller' => '${1:controller}', 'action' => '${2:action}'));
+
+snippet ren
+	$this->render(${1:'${2:action}'}$3);
+
+snippet app
+	App::import('${1:LibraryName}', ${2:'${3:ClassName}'});
+
+snippet cr
+	ClassRegistry::init(${1:'${2:ModelName}'}$3);
+
+snippet cbef
+	/**
+	 * Called before Controller::redirect().
+	 *
+	 * @param object $controller Controller with components to beforeRedirect
+	 * @return void
+	 * @access public
+	 */
+	function beforeRedirect(&$controller, $url, $status, $exit) {
+		$1
+	}
+
+snippet cinit
+	/**
+	 * Called before the Controller::beforeFilter().
+	 *
+	 * @param object $controller Controller with components to initialize
+	 * @return void
+	 * @access public
+	 */
+	function initialize(&$controller) {
+		$this->controller = &$controller;
+		$1
+	}
+
+snippet cstart
+	/**
+	 * Called after the Controller::beforeFilter() and before the controller action
+	 *
+	 * @param object $controller Controller with components to startup
+	 * @return void
+	 * @access public
+	 */
+	function startup(&$controller) {
+		$1
+	}
+
+snippet configr
+	Configure::read('')
+
+snippet configw
+	Configure::write('$1', $2);
+
+snippet after
+	/**
+	 * Controller afterFilter callback.
+	 * Called after the controller action is run and rendered.
+	 * 
+	 * @return void
+	 */
+	function afterFilter() {
+		$1
+	}
+
+snippet beforefil
+	/**
+	 * Controller beforeFilter callback.
+	 * Called before the controller action. 
+	 * 
+	 * @return void
+	 */
+	function beforeFilter() {
+		$1
+	}
+
+snippet beforeren
+	/**
+	 * Controller afterFilter callback.
+	 * Called after the controller action is run, but before the view is rendered.
+	 * 
+	 * @return void
+	 */
+	function beforeRender() {
+		$1
+	}
+
+# Inflector
+snippet infcam
+	Inflector::camelize(${1:$word})
+
+snippet infclass
+	Inflector::classify(${1:$word})
+
+snippet infhum
+	Inflector::humanize(${1:$word})
+
+snippet infplur
+	Inflector::pluralize(${1:$word})
+
+snippet infsing
+	Inflector::singularize(${1:$word})
+
+snippet infslug
+	Inflector::slug(${1:$word})
+
+snippet inftab
+	Inflector::tabelize(${1:$word})
+
+snippet infunder
+	Inflector::underscore(${1:$word})
+
+snippet infvar
+	Inflector::variable(${1:$word})
+
+snippet afterdelete
+	function afterDelete() {
+		$1
+	}
+
+# Callback methods
+snippet afterfind
+	function afterFind(${1:$results}) {
+		$2
+	}
+
+snippet aftersave
+	function afterSave(${1:$created}) {
+		$2
+	}
+
+snippet beforedelete
+	function beforeDelete() {
+		$1
+	}
+
+snippet beforefind
+	function beforeFind(${1:$queryData}) {
+		$2
+	}
+
+snippet beforesave
+	function beforeSave() {
+		$1
+	}
+
+snippet beforevalidate
+	function beforeValidate() {
+		$1
+	}
+
+snippet onerror
+	function onError() {
+		$1
+	}
+
+snippet __
+	__('${1}'${2:, true})${3:;}
+
+snippet __h
+	<?php __('${1}'${2:, true}); ?> 
+
+# Model
+snippet act
+	var $actsAs = array('${1:BehaviorName}'${2: => ${3:ConfigForBehavior}});
+
+snippet bt
+	var $belongsTo = array('${1:Model}'${2: => array(${3:'className' => '${4:${1:ModelClassName}}', }${5:'foreignKey' => '${6:foreign_key_field}'})});
+
+snippet habtm
+	var $hasAndBelongsToMany = array('${1:Model}'${2: => array(${3:'className' => '${4:${1:ModelClassName}}', }${5:'foreignKey' => '${6:foreign_key_field}'})});
+
+snippet hm
+	var $hasMany = array('${1:Model}'${2: => array(${3:'className' => '${4:${1:ModelClassName}}', }${5:'foreignKey' => '${6:foreign_key_field}'})});
+
+snippet ho
+	var $hasOne = array('${1:Model}'${2: => array(${3:'className' => '${4:${1:ModelClassName}}', }${5:'foreignKey' => '${6:foreign_key_field}'})});
+
+snippet lay
+	var $layout = ${1:'$2'};
+
+snippet use
+	var $useTable = ${1:'${2:table_name}'};
