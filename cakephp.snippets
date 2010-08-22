@@ -70,9 +70,6 @@ snippet year
 	<?php echo $this->Form->year('${1:Model}.${2:field}'$3); ?>
 
 # HTML helper
-snippet addc
-	<?php $this->Html->addCrumb('${1:CrumbName}'${2:, '${3:CrumbLink}'}); ?>
-
 snippet char
 	<?php echo $this->Html->charset($1); ?>
 
@@ -85,36 +82,33 @@ snippet div
 snippet doc
 	<?php echo $this->Html->doctype('${1:xhtml-strict}'); ?>
 
-snippet getc
-	<?php echo $this->Html->getCrumbs(${1:'${2:«separator»}'}); ?>
-
 snippet img
 	<?php echo $this->Html->image('${1:image.ext}', array('alt'=>'${2:altText}'$3)); ?>
 
 snippet imgl
 	<?php echo $this->Html->link(
 		$this->Html->image('${1:image.ext}', array('alt' => '${2:altText}'$3)),
-		${4:array('controller' => '${5:controller}', 'action' => '${6:action}'$7)},
+		${4:array('controller' => '${5:controller}', 'action' => '${6:action}'$7),
 		${8:null}, ${9:null}, ${10:false}
 	); ?>
 
 snippet link
-	<?php echo $this->Html->link('${1:text}', ${2:array('controller' => '${3:controller}', 'action' => '${4:action}'$5)}); ?>
+	<?php echo $this->Html->link('${1:text}', ${2:array('controller' => '${3:controller}', 'action' => '${4:action}'$5)); ?>
 
 snippet metatom
-	<?php echo $this->Html->meta('atom', ${1:$this->webroot('${2:atom.xml}')}); ?>
+	<?php echo $this->Html->meta('atom', '${1:atom.xml}'); ?>
 
-snippet metdesc
-	<?php echo $this->Html->meta('description', ${1:'${2:your description here}'}); ?>
+snippet metadesc
+	<?php echo $this->Html->meta('description', '${1:your description here}'); ?>
 
 snippet metaicon
-	<?php echo $this->Html->meta('icon', ${1:$this->webroot('${2:favicon.ico}')}); ?>
+	<?php echo $this->Html->meta('icon', '${2:favicon.ico}'); ?>
 
 snippet metakey
-	<?php echo $this->Html->meta('keywords', ${1:'${2:your keywords here}'}); ?>
+	<?php echo $this->Html->meta('keywords', '${1:your keywords here}'); ?>
 
 snippet metarss
-	<?php echo $this->Html->meta('rss', ${1:$this->webroot('${2:feed.rss}')}); ?>
+	<?php echo $this->Html->meta('rss', '${1:feed.rss}'); ?>
 
 snippet meta
 	<?php echo $this->Html->meta('${1:type}'$2); ?>
@@ -134,7 +128,7 @@ snippet jval
 
 # Controller
 snippet dela
-	$this->${1:ModelName}->deleteAll(${2:$conditions}${3:, ${4:$cascade}});
+	$this->${1:ModelName}->deleteAll(${2:$conditions}${3: ,$cascade});
 
 snippet id=
 	$this->${1:ModelName}->id = ${2:$id};
@@ -143,21 +137,19 @@ snippet save
 	$this->${1:ModelName}->save(${2:$this->data});
 
 snippet savef
-	$this->${1:ModelName}->saveField(${2:'$3'}, ${4:$fieldValue});
+	$this->${1:ModelName}->saveField('${2:$field}', ${3:$fieldValue});
 
 snippet upa
-	$this->${1:ModelName}->updateAll(${2:$fields}${3:, ${4:$conditions}});
+	$this->${1:ModelName}->updateAll(${2:$fields}${3: ,$conditions});
 
 snippet find
-	$this->${1:ModelName}->$2find(${3:'${4:all}' ${5:, array(
-		${6:'conditions' => ${7:'${8}'}}$0
-	)}});
+	$this->${1:ModelName}->find('${2:all}'${3: ,$params});
 
 snippet findby
-	$this->${1:ModelName}->findBy${2:FieldName(${3:$value}));
+	$this->${1:ModelName}->findBy${2:FieldName}(${3:$value});
 
 snippet findallby
-	$this->${1:ModelName}->findAllBy${2:FieldName(${3:$value}));
+	$this->${1:ModelName}->findAllBy${2:FieldName}(${3:$value}));
 
 snippet field
 	$this->${1:ModelName}->field(${2:'${3:name}'}, ${4:'conditions'}, ${5:'order'});
@@ -167,7 +159,7 @@ snippet pcount
 	<?php echo $this->Paginator->counter($1); ?>
 
 snippet plink
-	<?php echo $this->Paginator->link('${1:title}', array($2)$3); ?>
+	<?php echo $this->Paginator->link('${1:title}', array(); ?>
 
 snippet pnum
 	<?php echo $this->Paginator->numbers($1); ?>
@@ -195,7 +187,7 @@ snippet sres
 	$this->Session->restore();
 
 snippet sflash
-	$this->Session->setFlash(${1:'${2:Message}'}$3);
+	$this->Session->setFlash('${1:message}'${2:, 'default'}${3:, $params});
 
 snippet svalid
 	$this->Session->valid();
@@ -206,11 +198,11 @@ snippet swrite
 snippet serrhelper
 	<?php echo $this->Session->error(); ?>
 
-snippet sflashhelper
-	<?php echo $this->Session->flash(${2:'${3:key}'}); ?>
+snippet sflashhelp
+	<?php echo $this->Session->flash(${1:'key'}); ?>
 
-snippet sreadhelper
-	<?php echo $this->Session->read(${2:'${3:keyName}'}); ?>
+snippet sreadhelp
+	<?php echo $this->Session->read('${1:key}'); ?>
 
 # Assert
 snippet assertE
@@ -228,7 +220,7 @@ snippet assertT
 
 # Misc
 snippet echo 
-	<?php echo $data['${1:Model}']['${2:field}']; ?>
+	<?php echo $${1:data}['${2:Model}']['${3:field}']; ?>
 
 snippet elem
 	<?php echo $this->element('${1:element}'$0); ?>
@@ -252,50 +244,13 @@ snippet re
 	$this->redirect(array('controller' => '${1:controller}', 'action' => '${2:action}'));
 
 snippet ren
-	$this->render(${1:'${2:action}'}$3);
+	$this->render(${1:'action'});
 
 snippet app
-	App::import('${1:LibraryName}', ${2:'${3:ClassName}'});
+	App::import('${1:LibraryName}'${2:, 'ClassName'});
 
 snippet cr
-	ClassRegistry::init(${1:'${2:ModelName}'}$3);
-
-snippet cbef
-	/**
-	 * Called before Controller::redirect().
-	 *
-	 * @param object $controller Controller with components to beforeRedirect
-	 * @return void
-	 * @access public
-	 */
-	function beforeRedirect(&$controller, $url, $status, $exit) {
-		$1
-	}
-
-snippet cinit
-	/**
-	 * Called before the Controller::beforeFilter().
-	 *
-	 * @param object $controller Controller with components to initialize
-	 * @return void
-	 * @access public
-	 */
-	function initialize(&$controller) {
-		$this->controller = &$controller;
-		$1
-	}
-
-snippet cstart
-	/**
-	 * Called after the Controller::beforeFilter() and before the controller action
-	 *
-	 * @param object $controller Controller with components to startup
-	 * @return void
-	 * @access public
-	 */
-	function startup(&$controller) {
-		$1
-	}
+	ClassRegistry::init('${1:ModelName}');
 
 snippet configr
 	Configure::read('')
@@ -413,22 +368,16 @@ snippet __h
 
 # Model
 snippet act
-	var $actsAs = array('${1:BehaviorName}'${2: => ${3:ConfigForBehavior}});
+	var $actsAs = array('${1:BehaviorName}'${2: => ConfigForBehavior});
 
 snippet bt
-	var $belongsTo = array('${1:Model}'${2: => array(${3:'className' => '${4:${1:ModelClassName}}', }${5:'foreignKey' => '${6:foreign_key_field}'})});
+	var $belongsTo = array('${1:Model}');
 
 snippet habtm
-	var $hasAndBelongsToMany = array('${1:Model}'${2: => array(${3:'className' => '${4:${1:ModelClassName}}', }${5:'foreignKey' => '${6:foreign_key_field}'})});
+	var $hasAndBelongsToMany = array('${1:Model}');
 
 snippet hm
-	var $hasMany = array('${1:Model}'${2: => array(${3:'className' => '${4:${1:ModelClassName}}', }${5:'foreignKey' => '${6:foreign_key_field}'})});
+	var $hasMany = array('${1:Model}');
 
 snippet ho
-	var $hasOne = array('${1:Model}'${2: => array(${3:'className' => '${4:${1:ModelClassName}}', }${5:'foreignKey' => '${6:foreign_key_field}'})});
-
-snippet lay
-	var $layout = ${1:'$2'};
-
-snippet use
-	var $useTable = ${1:'${2:table_name}'};
+	var $hasOne = array('${1:Model}');
